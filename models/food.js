@@ -1,26 +1,28 @@
 var mongoose =  require('mongoose');
-mongoose.connect('mongodb://localhost/FoodDB');
-
-var db = mongoose.connection;
+var db = require('./connection');
 
 const Schema = mongoose.Schema;
+
 const foodSchema = new Schema({
     name: {
       type: String,
+      minlength: 3,
+      required: true,
     },
     price: {
       type: Number,
-      min: 0,
+      required: function(){
+        return this.price > 0;
+      },
     },
-    price: {
-      type: String
+    description: {
+      type: String,
+      default: "",
     }
 });
 
-foodSchema.index({name: 1});
-
 var Food = mongoose.model('Food', foodSchema);
-
+/*
 Food.insertMany([{
   name: 'flauta',
   price: 12.12,
@@ -28,4 +30,5 @@ Food.insertMany([{
 }], (err, data) => {
   console.log(err + data)
 });
+*/
 module.exports = Food;
