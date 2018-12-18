@@ -44,5 +44,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+>>>>>>> aa2e7cf8744905af0cade8edcac2407d6f2bbf64
 
 module.exports = app;
