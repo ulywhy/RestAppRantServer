@@ -43,8 +43,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-const port = process.env.PORT || 3000;
-console.log('listenning on port ' + port);
-app.listen(port);
+
 
 module.exports = app;
