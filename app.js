@@ -43,8 +43,13 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+<<<<<<< HEAD
 const port = process.env.PORT || 3000;
 console.log('listenning on port ' + port);
 app.listen(port);
+=======
+
+app.listen(process.env.PORT || 5656);
+>>>>>>> 5cc1c8f5af1e7c9e275f109792dabb907495da4a
 
 module.exports = app;
