@@ -27,11 +27,11 @@ router.get('/', (req, res, next) => {
     });
 
 
-    newOrder.save((err, food) => {
+    newOrder.save((err, order) => {
       if(err){
         res.json(err);
       }else{
-        res.json(food);
+        res.json(order);
       }
     });
   });
