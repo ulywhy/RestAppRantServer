@@ -21,13 +21,13 @@ router.get('/', (req, res, next) => {
     let params = req.body;
     console.log(params)
     let newOrder = new Order({
-      number: 3
+      number: 3,
       total: params.order.total,
-      items: Array.from(params.order.items.values());
+      items: Array.from(params.order.items.values())
     });
 
 
-    newFood.save((err, food) => {
+    newOrder.save((err, food) => {
       if(err){
         res.json(err);
       }else{
