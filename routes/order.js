@@ -26,6 +26,7 @@ router.get('/', (req, res, next) => {
       items: Array.from(params.order.items.values())
     });
 
+    console.log(newOrder);
 
     newOrder.save((err, order) => {
       if(err){
