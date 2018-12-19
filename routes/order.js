@@ -3,15 +3,13 @@ var router = express.Router();
 var Order = require('../models/order');
 
 router.get('/', (req, res, next) => {
-  console.log("serving orders");
   Order.find().
   populate({
       path: 'items.food',
       model: 'Food'
   }).exec(function(err, orders) {
-    if(err) console.log(err);
+    if(err)
     else {
-      console.log(orders);
       res.json(orders);
     }
   });
@@ -31,6 +29,7 @@ router.get('/', (req, res, next) => {
     newOrder.save((err, order) => {
       if(err){
         res.json(err);
+        console.log(err);
       }else{
         res.json(order);
       }
