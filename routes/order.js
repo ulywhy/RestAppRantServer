@@ -8,7 +8,7 @@ router.get('/', (req, res, next) => {
       path: 'items.food',
       model: 'Food'
   }).exec(function(err, orders) {
-    if(err)
+    if(err) console.log(err);
     else {
       res.json(orders);
     }
