@@ -29,6 +29,19 @@ const OrderSchema = new Schema({
     }
 });
 
+Food.find({}, (err, docs) => {
+  let set = new Set(docs);
+  console.log(set);
+  let items = Array.from(set.values());
+  console.log(items);
+  let order = new Order({
+    number:10,
+    total:100,
+    items:items,
+  });
+  console.log(order)
+});
+
 var Order = mongoose.model('Order', OrderSchema);
 /*
 Food.findOne({name: "flauta" }, (err, food) => {

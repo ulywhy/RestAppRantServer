@@ -25,7 +25,7 @@ router.post('/', (req, res, next) => {
   });
 
   console.log(newOrder);
-
+  res.json({value:ok})
   newOrder.save((err, order) => {
     if(err){
       res.json(err);
