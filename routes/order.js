@@ -21,7 +21,7 @@ router.post('/', (req, res, next) => {
   let newOrder = new Order({
     number: 3,
     total: params.order.total,
-    items: Array.from(params.order.items.values())
+    items: params.order.items
   });
 
   console.log(newOrder);
