@@ -17,19 +17,16 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   let params = req.body;
-  console.log(params)
+
   let newOrder = new Order({
-    number: 3,
-    total: params.order.total,
-    items: params.order.items
+    number: params.number,
+    total: params.total,
+    items: params.items
   });
 
-  console.log(newOrder);
-  res.json({value:ok})
   newOrder.save((err, order) => {
     if(err){
       res.json(err);
-      console.log(err);
     }else{
       res.json(order);
     }
