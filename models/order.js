@@ -29,7 +29,7 @@ const OrderSchema = new Schema({
     }
 });
 
-Food.find({}, (err, docs) => {
+/*Food.find({}, (err, docs) => {
   let set = new Set(docs);
   console.log(set);
   let items = Array.from(set.values());
@@ -41,6 +41,7 @@ Food.find({}, (err, docs) => {
   });
   console.log(order)
 });
+*/
 
 var Order = mongoose.model('Order', OrderSchema);
 /*
