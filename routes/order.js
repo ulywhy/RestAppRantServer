@@ -17,12 +17,24 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   let params = req.body;
+  let itemsMap = params.order.items;
 
-  let newOrder = new Order({
-    number: params.number,
-    total: params.total,
-    items: params.items
-  });
+  Food.find({name:{$in:Array.from(itemsMap.values())}},
+    (err, foods) => {
+      if(foods){
+        foods.forEach(function(food){
+          let item = itemsMap.get(food.name);
+          //item has only th food id
+          item.food = food._id;
+        });
+
+        let newOrder = new Order({
+          number: params.order.number,
+          total: params.order.total,
+          items: Array.from(itemsMap.values())
+        });
+      }
+    });
 
   newOrder.save((err, order) => {
     if(err){
