@@ -17,7 +17,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   let params = req.body;
-  let itemsMap = params.order.items;
+  let itemsMap = params.items;
 
   Food.find({name:{$in:Array.from(itemsMap.values())}},
     (err, foods) => {
@@ -29,8 +29,8 @@ router.post('/', (req, res, next) => {
         });
 
         let newOrder = new Order({
-          number: params.order.number,
-          total: params.order.total,
+          number: params.number,
+          total: params.total,
           items: Array.from(itemsMap.values())
 
         });
