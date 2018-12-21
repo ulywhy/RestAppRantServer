@@ -21,7 +21,7 @@ router.post('/', (req, res, next) => {
   let newOrder = new Order({
     number: params.number,
     total: params.total,
-    items: params.items.map(i => i._id)
+    items: params.items.map(i => i.id)
   });
 
   newOrder.save((err, order) => {
