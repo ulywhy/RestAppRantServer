@@ -17,11 +17,11 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   let params = req.body;
-  
+
   let newOrder = new Order({
     number: params.number,
     total: params.total,
-    items: params.items.map(i => i.food._id)
+    items: params.items
   });
 
   newOrder.save((err, order) => {
