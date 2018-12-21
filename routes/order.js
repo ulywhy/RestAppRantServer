@@ -32,16 +32,16 @@ router.post('/', (req, res, next) => {
           number: params.order.number,
           total: params.order.total,
           items: Array.from(itemsMap.values())
+
+        });
+        newOrder.save((err, order) => {
+          if(err){
+            res.json(err);
+          }else{
+            res.json(order);
+          }
         });
       }
-    });
-
-  newOrder.save((err, order) => {
-    if(err){
-      res.json(err);
-    }else{
-      res.json(order);
-    }
   });
 });
 
