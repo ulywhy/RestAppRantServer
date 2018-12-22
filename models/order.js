@@ -6,6 +6,11 @@ const Schema = mongoose.Schema;
 
 
 const OrderSchema = new Schema({
+    status:{
+        type: String,
+        enum: ['served', 'cancelled', 'waiting'],
+        default: 'waiting'
+    },
     number: {
       type: Number,
     },
@@ -44,7 +49,7 @@ const OrderSchema = new Schema({
 */
 
 var Order = mongoose.model('Order', OrderSchema);
-
+/*
 Food.findOne({name: "flauta" }, (err, food) => {
 
   Order.insertMany([{
@@ -59,6 +64,6 @@ Food.findOne({name: "flauta" }, (err, food) => {
     console.log(err + data)
   });
 
-});
+});*/
 
 module.exports = Order;
