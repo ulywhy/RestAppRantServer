@@ -5,6 +5,7 @@ var Food = require('../models/food');
 router.get('/', (req, res, next) => {
 
   Food.find({}, (err, food) => {
+    console.log(food);
     res.json(food);
   });
 

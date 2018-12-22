@@ -20,8 +20,8 @@ const OrderSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Food'
       },
-      count: Number,
-      subtotal: Number
+      _count: Number,
+      _subtotal: Number
     }],
     date: {
       type: Date,
@@ -29,8 +29,22 @@ const OrderSchema = new Schema({
     }
 });
 
+/*Food.find({}, (err, docs) => {
+  let set = new Set(docs);
+  console.log(set);
+  let items = Array.from(set.values());
+  console.log(items);
+  let order = new Order({
+    number:10,
+    total:100,
+    items:items,
+  });
+  console.log(order)
+});
+*/
+
 var Order = mongoose.model('Order', OrderSchema);
-/*
+
 Food.findOne({name: "flauta" }, (err, food) => {
 
   Order.insertMany([{
@@ -38,12 +52,13 @@ Food.findOne({name: "flauta" }, (err, food) => {
     total: 200,
     items : [{
       food: food.id,
-      count: 3,
+      _count: 3,
       subtotal:200
     }]
   }], (err, data) => {
     console.log(err + data)
   });
 
-});*/
+});
+
 module.exports = Order;

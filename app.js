@@ -25,6 +25,9 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+/* Static files for the client app*/
+//app.use('/', express.static(path.join(__dirname, 'dist')))
 app.use('/', indexRouter);
 app.use('/rest', restRouter);
 
@@ -32,7 +35,7 @@ app.use('/rest', restRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
+app.listen(5656);
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
