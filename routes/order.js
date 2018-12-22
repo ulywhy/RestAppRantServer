@@ -20,12 +20,21 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
   let params = req.body;
   console.log(params)
+<<<<<<< HEAD
   params.order.items.forEach(i => i.count = i._count);
   
   let newOrder = new Order({
     number: params.order.number,
     total: params.order.total,
     items: params.order.items
+=======
+  let itemsMap = params.items;
+
+  let newOrder = new Order({
+    number: params.order.number,
+    total: params.order.total,
+    items: params.order.itens
+>>>>>>> ef35958048a1551a5a521ac308407ed88d2e2a86
   });
 
   newOrder.save((err, order) => {

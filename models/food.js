@@ -4,6 +4,7 @@ var db = require('./connection');
 const Schema = mongoose.Schema;
 
 const foodSchema = new Schema({
+    _id: String,
     name: {
       type: String,
       minlength: 3,
