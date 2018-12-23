@@ -1,6 +1,8 @@
 var mongoose =  require('mongoose');
+var autoIncrement = require('mongoose-sequence')(mongoose);
 var Food = require('./food');
 var db = require('./connection');
+
 
 const Schema = mongoose.Schema;
 
@@ -8,7 +10,7 @@ const Schema = mongoose.Schema;
 const OrderSchema = new Schema({
     status:{
         type: String,
-        enum: ['served', 'cancelled', 'waiting'],
+        enum: ['served', 'cancelled', 'waiting', 'paid'],
         default: 'waiting'
     },
     number: {
@@ -34,26 +36,16 @@ const OrderSchema = new Schema({
     }
 });
 
-/*Food.find({}, (err, docs) => {
-  let set = new Set(docs);
-  console.log(set);
-  let items = Array.from(set.values());
-  console.log(items);
-  let order = new Order({
-    number:10,
-    total:100,
-    items:items,
-  });
-  console.log(order)
+OrderSchema.plugin(autoIncrement, {
+  inc_field:'number'
 });
-*/
 
 var Order = mongoose.model('Order', OrderSchema);
-/*
-Food.findOne({name: "flauta" }, (err, food) => {
+
+/*Food.findOne({name: "flauta" }, (err, food) => {
 
   Order.insertMany([{
-    number: 1,
+    status:'served',
     total: 200,
     items : [{
       food: food.id,

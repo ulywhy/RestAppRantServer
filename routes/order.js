@@ -3,7 +3,11 @@ var router = express.Router();
 var Order = require('../models/order');
 
 router.get('/', (req, res, next) => {
-  Order.find().
+  let params = req.query;
+  let query = {
+    status : params.status || '',
+  }
+  Order.find(query).
   populate({
       path: 'items.food',
       model: 'Food'
@@ -33,6 +37,15 @@ router.post('/', (req, res, next) => {
     }else{
       res.json(order);
     }
+  });
+});
+
+router.put('/', (req, res, next) => {
+  let orderUpdate = req.body.order;
+  console.log(orderUpdate);
+  Order.findOneAndUpdate({_id:orderUpdate._id}, orderUpdate, (err, order)=>{
+    if(err) res.json(err);
+    else res.json(order);
   });
 });
 
