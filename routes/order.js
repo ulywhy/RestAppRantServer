@@ -32,7 +32,7 @@ router.post('/', (req, res, next) => {
     number: params.order.number,
     total: params.order.total,
     items: params.order.items
-    });
+  });
 
   newOrder.save((err, order) => {
     if(err){
