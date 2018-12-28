@@ -16,8 +16,6 @@ router.get('/', (req, res, next) => {
   Order.find(query, function(err, orders) {
     if(err) console.log(err);
     else {
-      orders.forEach(order => order.items.forEach(
-        item => item.food.price = item.subtotal/item.count));
       res.json(orders);
     }
   });
