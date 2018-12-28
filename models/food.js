@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const foodSchema = new Schema({
     name: {
       type: String,
+      lowercase : true,
       minlength: 3,
       required: true,
     },

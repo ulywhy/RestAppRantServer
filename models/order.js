@@ -25,7 +25,8 @@ const OrderSchema = new Schema({
     items: [{
       food: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Food'
+        ref: 'Food',
+        autopopulate: true
       },
       _count: Number,
       _subtotal: Number
@@ -36,6 +37,7 @@ const OrderSchema = new Schema({
     }
 });
 
+OrderSchema.plugin(require('mongoose-autopopulate'));
 OrderSchema.plugin(autoIncrement, {
   inc_field:'number'
 });

@@ -1,20 +1,23 @@
 var express = require('express');
 var router = express.Router();
 var Order = require('../models/order');
+var moment = require('moment');
 
 router.get('/', (req, res, next) => {
   let params = req.query;
+  console.log(params.status);
+
+  let today = moment().hours(0).minutes(0).seconds(0);
+
   let query = {
     status : params.status || '',
+    date : { "$gte" : today.toDate()}
   }
-  Order.find(query).
-  populate({
-      path: 'items.food',
-      model: 'Food'
-  }).exec(function(err, orders) {
+  Order.find(query, function(err, orders) {
     if(err) console.log(err);
     else {
-      console.log(orders);
+      orders.forEach(order => order.items.forEach(
+        item => item.food.price = item.subtotal/item.count));
       res.json(orders);
     }
   });
