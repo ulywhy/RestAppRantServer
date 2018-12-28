@@ -33,6 +33,7 @@ router.post('/', (req, res, next) => {
     total: params.order.total,
     items: params.order.items
     });
+  });
 
   newOrder.save((err, order) => {
     if(err){
