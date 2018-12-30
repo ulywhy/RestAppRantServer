@@ -48,4 +48,14 @@ router.put('/', (req, res, next) => {
   });
 });
 
+router.delete('/:id', (req, res, next) => {
+  let id = req.params.id;
+  console.log(id);
+  Order.deleteOne({_id: id}, (err)=>{
+    if(err) res.json(err);
+    else res.status(200).send();
+  });
+});
+
+
 module.exports = router;
