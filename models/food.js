@@ -4,12 +4,13 @@ var db = require('./connection');
 const Schema = mongoose.Schema;
 
 const foodSchema = new Schema({
-    _id: String,
+    //_id: String,
     name: {
       type: String,
       lowercase : true,
       minlength: 3,
       required: true,
+      unique: true,
     },
     price: {
       type: Number,
@@ -26,7 +27,7 @@ const foodSchema = new Schema({
 var Food = mongoose.model('Food', foodSchema);
 
 Food.insertMany([{
-  name: 'flauta',
+  name: 'FLAUTA',
   price: 12.12,
   description: 'tortilla grande dorada rellena de pollo',
 }], (err, data) => {

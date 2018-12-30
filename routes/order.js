@@ -9,13 +9,14 @@ router.get('/', (req, res, next) => {
 
   let today = moment().hours(0).minutes(0).seconds(0);
 
-  let query = {
-    status : params.status || '',
-    date : { "$gte" : today.toDate()}
-  }
+  let query = params;
+  query.date = {"$gte" : today.toDate()};
+
   Order.find(query, function(err, orders) {
     if(err) console.log(err);
     else {
+      orders.forEach(order => order.items.forEach(
+        item => console.log(item)));
       res.json(orders);
     }
   });
@@ -23,14 +24,11 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   let params = req.body;
+  console.log(params.items)
+  params.items.forEach(i => i.food = i.food._id);
+  console.log(params.items)
 
-  params.order.items.forEach(i => i.food = i.food._id);
-
-  let newOrder = new Order({
-    number: params.order.number,
-    total: params.order.total,
-    items: params.order.items
-  });
+  let newOrder = new Order(params);
 
   newOrder.save((err, order) => {
     if(err){
