@@ -26,13 +26,13 @@ const foodSchema = new Schema({
 
 var Food = mongoose.model('Food', foodSchema);
 
-Food.insertMany([{
+/*Food.insertMany([{
   name: 'FLAUTA',
   price: 12.12,
   description: 'tortilla grande dorada rellena de pollo',
 }], (err, data) => {
   console.log(err + data)
 });
-
+*/
 
 module.exports = Food;

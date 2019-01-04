@@ -366,11 +366,11 @@ MIT
 
 @angular/material/form-field
 
+@angular/material/expansion
+
 @angular/material/icon
 
 @angular/material/table
-
-@angular/material/expansion
 
 @angular/material/divider
 
