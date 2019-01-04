@@ -40,7 +40,7 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/', (req, res, next) => {
-  let orderUpdate = req.body.order;
+  let orderUpdate = req.body;
   console.log(orderUpdate);
   Order.findOneAndUpdate({_id:orderUpdate._id}, orderUpdate, (err, order)=>{
     if(err) res.json(err);

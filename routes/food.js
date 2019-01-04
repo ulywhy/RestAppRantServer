@@ -20,13 +20,30 @@ router.post('/', (req, res, next) => {
     description: params.description
   });
 
-
   newFood.save((err, food) => {
     if(err){
       res.json(err);
     }else{
       res.json(food);
     }
+  });
+});
+
+router.put('/', (req, res, next) => {
+  let foodUpdate = req.body.food;
+  console.log(foodUpdate);
+  Food.findOneAndUpdate({_id:foodUpdate._id}, foodUpdate, (err, food)=>{
+    if(err) res.json(err);
+    else res.json(food);
+  });
+});
+
+router.delete('/:id', (req, res, next) => {
+  console.log("deleting");
+  let id = req.params.id;
+  Food.deleteOne({_id: id}, (err)=>{
+    if(err) res.json(err);
+    else res.status(200).send();
   });
 });
 
