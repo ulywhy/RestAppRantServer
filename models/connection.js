@@ -1,5 +1,5 @@
 var mongoose =  require('mongoose');
-var uri = 'mongodb+srv://serverAdmin:jSK2fzge3iSOALAf@cluster0-44v1f.mongodb.net/test?retryWrites=true';
+var uri = 'mongodb+srv://serverAdmin:jSK2fzge3iSOALAf@cluster0-44v1f.mongodb.net/kesadillotas?retryWrites=true';
 
 mongoose.set('useCreateIndex', true);
 
