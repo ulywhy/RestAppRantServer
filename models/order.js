@@ -12,10 +12,6 @@ const OrderSchema = new Schema({
       type: Boolean,
       default: false
     },
-    served : {
-      type: Boolean,
-      default: false
-    },
     number: {
       type: Number,
     },
