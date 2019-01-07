@@ -8,10 +8,13 @@ const Schema = mongoose.Schema;
 
 
 const OrderSchema = new Schema({
-    status:{
-        type: String,
-        enum: ['served', 'cancelled', 'waiting', 'paid'],
-        default: 'waiting'
+    paid : {
+      type: Boolean,
+      default: false
+    },
+    served : {
+      type: Boolean,
+      default: false
     },
     number: {
       type: Number,
