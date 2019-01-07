@@ -372,17 +372,15 @@ MIT
 
 @angular/material/table
 
-@angular/material/divider
-
 @angular/material/tabs
 
 @angular/material/grid-list
 
-@angular/material/card
-
 @angular/material/toolbar
 
 @angular/material/menu
+
+@angular/material/divider
 
 zone.js
 MIT
