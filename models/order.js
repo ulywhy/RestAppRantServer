@@ -1,6 +1,6 @@
 var mongoose =  require('mongoose');
 var autoIncrement = require('mongoose-sequence')(mongoose);
-var Food = require('./food');
+var Product = require('./product');
 var db = require('./connection');
 
 
@@ -22,9 +22,9 @@ const OrderSchema = new Schema({
       },
     },
     items: [{
-      food: {
+      product: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Food',
+        ref: 'Product',
         autopopulate: true
       },
       _count: Number,
@@ -43,13 +43,13 @@ OrderSchema.plugin(autoIncrement, {
 
 var Order = mongoose.model('Order', OrderSchema);
 
-/*Food.findOne({name: "flauta" }, (err, food) => {
+/*product.findOne({name: "flauta" }, (err, product) => {
 
   Order.insertMany([{
     status:'served',
     total: 200,
     items : [{
-      food: food.id,
+      product: product.id,
       _count: 3,
       subtotal:200
     }]

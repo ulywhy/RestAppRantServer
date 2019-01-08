@@ -1,9 +1,10 @@
 var mongoose =  require('mongoose');
 var db = require('./connection');
+var ProductArea = require('./product-area');
 
 const Schema = mongoose.Schema;
 
-const foodSchema = new Schema({
+const productSchema = new Schema({
     //_id: String,
     name: {
       type: String,
@@ -21,12 +22,17 @@ const foodSchema = new Schema({
     description: {
       type: String,
       default: "",
+    },
+    area : {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ProductArea',
+      autopopulate: true
     }
 });
 
-var Food = mongoose.model('Food', foodSchema);
+var product = mongoose.model('Product', productSchema);
 
-/*Food.insertMany([{
+/*product.insertMany([{
   name: 'FLAUTA',
   price: 12.12,
   description: 'tortilla grande dorada rellena de pollo',
@@ -35,4 +41,4 @@ var Food = mongoose.model('Food', foodSchema);
 });
 */
 
-module.exports = Food;
+module.exports = product;

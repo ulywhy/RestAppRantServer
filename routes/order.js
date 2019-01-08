@@ -23,12 +23,12 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  let params = req.body;
-  console.log(params.items)
-  params.items.forEach(i => i.food = i.food._id);
-  console.log(params.items)
+  let order = req.body;
 
-  let newOrder = new Order(params);
+  order.items.forEach(i => i.product = i.product._id);
+  console.log(order.items)
+
+  let newOrder = new Order(order);
 
   newOrder.save((err, order) => {
     if(err){
