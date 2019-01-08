@@ -370,6 +370,8 @@ MIT
 
 @angular/material/icon
 
+@angular/material/checkbox
+
 @angular/material/table
 
 @angular/material/tabs
